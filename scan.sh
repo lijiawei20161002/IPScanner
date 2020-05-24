@@ -42,12 +42,12 @@ then
 fi
 
 #how many ip in this subnet
-subnet=32-$ip
+subnet=$((32-$ip))
 num=$((2**($subnet)))
 cnt=0
 
 #scanning
-while [ $num -ge 0 ]
+while [[ $num -ge 0 ]]
 do
 ip="$l1.$l2.$l3.$l4"
 echo "$ip"
@@ -61,14 +61,17 @@ if(($l4<255))
 then
   ((l4=$l4+1))
 else
+  ((l4=0))
   if(($l3<255))
   then
      ((l3=$l3+1))
   else
+     ((l3=0))
      if(($l2<255))
      then
         ((l2=$l2+1))
      else
+        ((l2=0))
         ((l1=$l1+1))
      fi
   fi
